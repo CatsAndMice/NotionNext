@@ -24,53 +24,58 @@ const Footer = ({ title }) => {
       className='z-10 bg-black text-white justify-center m-auto w-full p-6 relative'>
       <div className='max-w-screen-3xl w-full mx-auto '>
         {/* 信息与链接区块 */}
-        <div className='w-full flex lg:flex-row flex-col justify-between py-16'>
-          <div className='gap-x-2 py-6 flex items-center'>
-            {/* 站长信息 */}
-            <LazyImage
-              src={siteInfo?.icon}
-              className='rounded-full'
-              width={40}
-              alt={siteConfig('AUTHOR')}
-            />
-            <div>
-              <h1 className='text-lg'>{title}</h1>
-              <i className='fas fa-copyright' />
+
+
+        {
+          MAGZINE_FOOTER_LINKS && MAGZINE_FOOTER_LINKS.length > 0 && (<div className='w-full flex lg:flex-row flex-col justify-between py-16'>
+            <div className='gap-x-2 py-6 flex items-center'>
+              {/* 站长信息 */}
+              <LazyImage
+                src={siteInfo?.icon}
+                className='rounded-full'
+                width={40}
+                alt={siteConfig('AUTHOR')}
+              />
+              <div>
+                <h1 className='text-lg'>{title}</h1>
+                {/* <i className='fas fa-copyright' />
               <a
                 href={siteConfig('LINK')}
                 className='underline font-bold justify-start  '>
                 {siteConfig('AUTHOR')}
-              </a>
+              </a> */}
+              </div>
             </div>
-          </div>
 
-          {/* 右侧链接区块 */}
-          <div className='grid grid-cols-2 lg:grid-cols-4 lg:gap-16 gap-8'>
-            {MAGZINE_FOOTER_LINKS?.map((group, index) => {
-              return (
-                <div key={index}>
-                  <div className='font-bold text-xl text-white lg:pb-8 pb-4'>
-                    {group.name}
+            {/* 右侧链接区块 */}
+            <div className='grid grid-cols-2 lg:grid-cols-4 lg:gap-16 gap-8'>
+              {MAGZINE_FOOTER_LINKS?.map((group, index) => {
+                return (
+                  <div key={index}>
+                    <div className='font-bold text-xl text-white lg:pb-8 pb-4'>
+                      {group.name}
+                    </div>
+                    <div className='flex flex-col gap-y-2'>
+                      {group?.menus?.map((menu, index) => {
+                        return (
+                          <div key={index}>
+                            <SmartLink href={menu.href} className='hover:underline'>
+                              {menu.title}
+                            </SmartLink>
+                          </div>
+                        )
+                      })}
+                    </div>
                   </div>
-                  <div className='flex flex-col gap-y-2'>
-                    {group?.menus?.map((menu, index) => {
-                      return (
-                        <div key={index}>
-                          <SmartLink href={menu.href} className='hover:underline'>
-                            {menu.title}
-                          </SmartLink>
-                        </div>
-                      )
-                    })}
-                  </div>
-                </div>
-              )
-            })}
-          </div>
-        </div>
+                )
+              })}
+            </div>
+          </div>)
+        }
+
 
         {/* 页脚 */}
-        <div className='py-4 flex flex-col lg:flex-row  justify-between items-center border-t border-gray-400'>
+        <div className={MAGZINE_FOOTER_LINKS && MAGZINE_FOOTER_LINKS.length > 0 ? 'flex flex-col lg:flex-row  justify-between items-center py-4  border-t border-gray-400' : 'flex flex-col lg:flex-row  justify-between items-center border-gray-400'}>
           <div className='flex gap-x-2 flex-wrap justify-between items-center'>
             <CopyRightDate />
             <PoweredBy />

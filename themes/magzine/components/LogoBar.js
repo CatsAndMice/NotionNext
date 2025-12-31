@@ -16,7 +16,7 @@ export default function LogoBar({ siteInfo, className }) {
           width={24}
           height={20}
           alt={siteConfig('AUTHOR')}
-          className='mr-2 hidden md:inline-block'
+          className='mr-2 hidden md:inline-block rounded-full'
         />
         <span>{siteConfig('TITLE')}</span>
       </SmartLink>
