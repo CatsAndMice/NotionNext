@@ -36,12 +36,12 @@ const Footer = ({ title }) => {
             />
             <div>
               <h1 className='text-lg'>{title}</h1>
-              <i className='fas fa-copyright' />
+              {/* <i className='fas fa-copyright' />
               <a
                 href={siteConfig('LINK')}
                 className='underline font-bold justify-start  '>
                 {siteConfig('AUTHOR')}
-              </a>
+              </a> */}
             </div>
           </div>
 
@@ -74,7 +74,7 @@ const Footer = ({ title }) => {
         <div className='py-4 flex flex-col lg:flex-row  justify-between items-center border-t border-gray-400'>
           <div className='flex gap-x-2 flex-wrap justify-between items-center'>
             <CopyRightDate />
-            <PoweredBy />
+            {/* <PoweredBy /> */}
           </div>
 
           <DarkModeButton className='text-white' />
